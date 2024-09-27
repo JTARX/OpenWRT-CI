@@ -1,11 +1,5 @@
 #!/bin/bash
 
-echo >> feeds.conf.default
-echo 'src-git istore https://github.com/linkease/istore;main' >> feeds.conf.default
-./scripts/feeds update istore
-./scripts/feeds install -d y -p istore luci-app-store
-
-
 #安装和更新软件包
 UPDATE_PACKAGE() {
 	local PKG_NAME=$1
@@ -27,6 +21,9 @@ UPDATE_PACKAGE() {
 }
 
 #UPDATE_PACKAGE "包名" "项目地址" "项目分支" "pkg/name，可选，pkg为从大杂烩中单独提取包名插件；name为重命名为包名"
+UPDATE_PACKAGE "iStore" "linkease/istore" "main"
+
+
 
 
 if [[ $WRT_REPO == *"openwrt-6.x"* ]]; then
