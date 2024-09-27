@@ -40,6 +40,13 @@ UPDATE_VERSION() {
 		return
 	fi
 
+
+echo >> feeds.conf.default
+echo 'src-git istore https://github.com/linkease/istore;main' >> feeds.conf.default
+./scripts/feeds update istore
+./scripts/feeds install -d y -p istore luci-app-store
+
+
 	echo "$PKG_NAME version update has started!"
 
 	for PKG_FILE in $PKG_FILES; do
